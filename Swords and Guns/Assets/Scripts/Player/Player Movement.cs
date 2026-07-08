@@ -32,17 +32,15 @@ public class PlayerMovement : MonoBehaviour
         tmp.x = 0;
         transform.localEulerAngles = tmp;// = Camera.main.transform.rotation;
     
-        
-        float angle = gameObject.transform.localEulerAngles.y;
-       
-        movement = new Vector2() * movement;
-        //maybe
-        /*
-        public Vector2 Vector2FromAngle(float a)
-    {
-        a *= Mathf.Deg2Rad;
-        return new Vector2(Mathf.Cos(a), Mathf.Sin(a));
-    }*/
+        float angle = Mathf.Deg2Rad*(gameObject.transform.localEulerAngles.y);
+
+        Debug.Log("ITERATION");
+        Debug.Log(gameObject.transform.localEulerAngles.y);
+        Debug.Log(movement.y*Mathf.Cos(angle));
+        movement = new Vector2(movement.x*Mathf.Sin(angle) - movement.y*Mathf.Cos(angle),
+                                   movement.x*Mathf.Cos(angle) + movement.y*Mathf.Sin(angle)); 
+
+        Debug.Log(movement);
         if(movement.x == 0 && movement.y == 0) //set for animation
         {
             animator.SetBool("isMoving", false);
