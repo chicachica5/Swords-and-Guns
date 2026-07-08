@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CameraScript : MonoBehaviour
 {
-    private const float YMin = -50.0f;
-    private const float YMax = 50.0f;
+    private const float YMin = -65.0f;
+    private const float YMax = 65.0f;
 
     public Transform lookAt;
     public Transform Player;
@@ -17,15 +17,6 @@ public class CameraScript : MonoBehaviour
     Vector2 currentPos;
     public float sensivity = 4.0f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-
-    }
-
-    // Update is called once per frame
     void LateUpdate()
     {
         currentPos += input.actions["Look"].ReadValue<Vector2>();
