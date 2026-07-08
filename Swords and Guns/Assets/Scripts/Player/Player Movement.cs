@@ -35,8 +35,14 @@ public class PlayerMovement : MonoBehaviour
         
         float angle = gameObject.transform.localEulerAngles.y;
        
-        movement = Quaternion.Euler(0f, angle, 0f) * movement;
-        
+        movement = new Vector2() * movement;
+        //maybe
+        /*
+        public Vector2 Vector2FromAngle(float a)
+    {
+        a *= Mathf.Deg2Rad;
+        return new Vector2(Mathf.Cos(a), Mathf.Sin(a));
+    }*/
         if(movement.x == 0 && movement.y == 0) //set for animation
         {
             animator.SetBool("isMoving", false);
