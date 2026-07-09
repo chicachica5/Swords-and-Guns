@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     float speed = 0.10f;
-    //float turnSpeed = 1.0f;
-    public float vSpeed = 0.0f; //current vertical speed
+    float runSpeed = 0.18f;
+    float actualSpeed;
+    float vSpeed = 0.0f; //current vertical speed
     float jumpSpeed = 4.0f;
     float gravity = 0.14f;
 
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
         movement.x = movement.y;
         movement.y = -1*aux;
 
+        //Set speed animator and speed for running or walking
+        
 
         //set rotation equal to camera, x rotation set to 0
         Vector3 tmp = Camera.main.transform.localEulerAngles;
@@ -34,21 +37,32 @@ public class PlayerMovement : MonoBehaviour
     
         float angle = Mathf.Deg2Rad*(gameObject.transform.localEulerAngles.y);
 
-        Debug.Log("ITERATION");
-        Debug.Log(gameObject.transform.localEulerAngles.y);
-        Debug.Log(movement.y*Mathf.Cos(angle));
+        //Did the vector transformation myself
         movement = new Vector2(movement.x*Mathf.Sin(angle) - movement.y*Mathf.Cos(angle),
                                    movement.x*Mathf.Cos(angle) + movement.y*Mathf.Sin(angle)); 
 
-        Debug.Log(movement);
+
         if(movement.x == 0 && movement.y == 0) //set for animation
         {
             animator.SetBool("isMoving", false);
+            animator.SetBool("isRunning", false);
+                
         }
         else 
         {
             animator.SetBool("isMoving", true);
+            if(input.actions["Sprint"].ReadValue<float>() == 1)
+            {
+                animator.SetBool("isRunning", true);
+                actualSpeed = runSpeed;
+            }
+            else 
+            {
+                animator.SetBool("isRunning", false);
+                actualSpeed = speed;
+            }
         }
+
         if(rb.isGrounded) //jumping logic, unoptimized, could be improved (same for all this script XD)
         {
             animator.SetBool("isJumping", false);
@@ -66,17 +80,6 @@ public class PlayerMovement : MonoBehaviour
         vSpeed -= gravity;
 
         //apply movement to characterbody (rigidboy for player)
-        rb.Move(new Vector3(movement.x, vSpeed, movement.y)*speed);
-    }
-
-    public void OnJump()
-    {
-        
-    }
-
-    public void OnSprint()
-    {
-        isRunning = true;
-        animator.SetBool("isRunning", isRunning);
+        rb.Move(new Vector3(movement.x, vSpeed, movement.y)*actualSpeed);
     }
 }
