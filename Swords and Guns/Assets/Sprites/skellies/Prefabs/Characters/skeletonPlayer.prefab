@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 2872509286327345570}
   - component: {fileID: 6998442364789697846}
   m_Layer: 0
-  m_Name: mini simple skeleton demo
+  m_Name: skeletonPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

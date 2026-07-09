@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     float gravity = 0.14f;
 
     Vector2 movement;
-    bool isRunning = false;
 
     [SerializeField] Camera cam;
     [SerializeField] Animator animator;
@@ -70,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
 
             if(input.actions["Jump"].ReadValue<float>() == 1.0f)
             {
-                Debug.Log("A");
                 vSpeed = jumpSpeed;
                 animator.SetBool("isJumping", true);
             }
