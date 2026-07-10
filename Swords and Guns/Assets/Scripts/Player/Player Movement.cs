@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float speed = 0.10f;
+    float speed = 0.12f;
     float runSpeed = 0.18f;
     float actualSpeed;
     float vSpeed = 0.0f; //current vertical speed

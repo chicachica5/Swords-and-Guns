@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 7187412154529696348}
   - component: {fileID: 4119054120066023822}
   - component: {fileID: 1114272372208537565}
+  - component: {fileID: 2199437901355898795}
   m_Layer: 0
   m_Name: ChestMonsterPBRDefault
   m_TagString: Enemy
@@ -299,6 +300,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac7572c2847ff046a45b1e083f8cf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealthManager
+--- !u!114 &2199437901355898795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219292830553907877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869acb75cca1e9046be3a737d5354571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChestBehaviour
+  anim: {fileID: 2219292830544548193}
 --- !u!1 &2219292830553907879
 GameObject:
   m_ObjectHideFlags: 0
