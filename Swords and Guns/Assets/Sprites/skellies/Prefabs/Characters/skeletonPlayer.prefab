@@ -324,9 +324,11 @@ GameObject:
   - component: {fileID: 1504084351034722919}
   - component: {fileID: 2872509286327345570}
   - component: {fileID: 6998442364789697846}
+  - component: {fileID: 7261888782698367603}
+  - component: {fileID: 2446347508860587939}
   m_Layer: 0
   m_Name: skeletonPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,6 +352,7 @@ Transform:
   - {fileID: 2757120097759788878}
   - {fileID: 5706810545989346951}
   - {fileID: 4530846129567930472}
+  - {fileID: 8620335382366661390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1116371902028168016
@@ -386,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781ecde04b5421a44800f37658ad6b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  vSpeed: 0
+  cam: {fileID: 0}
   animator: {fileID: 1116371902028168016}
   input: {fileID: 2872509286327345570}
   rb: {fileID: 6998442364789697846}
@@ -445,6 +448,38 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.73, z: -0.04}
+--- !u!114 &7261888782698367603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fe4efc4ecb88a468ee4f537dfd7179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletShooter
+  ShootPosition: {fileID: 7046269919250586779}
+  bulletPrefab: {fileID: 4906057730396637561, guid: 62e153ff615420d448f53d1131799be8, type: 3}
+  input: {fileID: 2872509286327345570}
+--- !u!114 &2446347508860587939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff9b4d763990b247a2305d17cf66110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
+  _entityStats:
+  - name: Health
+    stat: 10
+  - name: BulletDamage
+    stat: 3
 --- !u!1 &1818926580354158373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1241,37 @@ Transform:
   - {fileID: 3608445088507809770}
   - {fileID: 4918397571581251274}
   m_Father: {fileID: 5706810545989346951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7046269919250586779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8620335382366661390}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8620335382366661390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046269919250586779}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.56, z: 0.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2468889828458600031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7096458851429386407
 GameObject:

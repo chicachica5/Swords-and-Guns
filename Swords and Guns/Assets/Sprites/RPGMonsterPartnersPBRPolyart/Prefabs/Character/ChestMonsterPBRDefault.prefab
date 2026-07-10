@@ -165,9 +165,11 @@ GameObject:
   - component: {fileID: 8028481076216849939}
   - component: {fileID: 6350652799185087947}
   - component: {fileID: 7187412154529696348}
+  - component: {fileID: 4119054120066023822}
+  - component: {fileID: 1114272372208537565}
   m_Layer: 0
   m_Name: ChestMonsterPBRDefault
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +242,7 @@ CharacterController:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.45
   m_Radius: 0.59
@@ -270,6 +272,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.24, y: 1.46, z: 1.18}
   m_Center: {x: 0, y: 0.74, z: 0}
+--- !u!114 &4119054120066023822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219292830553907877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff9b4d763990b247a2305d17cf66110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
+  _entityStats:
+  - name: Health
+    stat: 10
+--- !u!114 &1114272372208537565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219292830553907877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac7572c2847ff046a45b1e083f8cf43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityHealthManager
 --- !u!1 &2219292830553907879
 GameObject:
   m_ObjectHideFlags: 0

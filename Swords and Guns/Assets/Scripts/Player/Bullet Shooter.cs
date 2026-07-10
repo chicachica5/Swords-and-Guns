@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class BulletShooter : MonoBehaviour
-{
+{   
+    [SerializeField] GameObject ShootPosition;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] PlayerInput input;
 
@@ -13,12 +14,12 @@ public class BulletShooter : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, gameObject.transform.position, Quaternion.identity);
-        
+        GameObject b = Instantiate(bulletPrefab, ShootPosition.transform.position, gameObject.transform.rotation);
+        b.GetComponent<BaseMovement>().setSpeed(1.0f);
     }
 
     void OnShoot()
     {
-        Instantiate(bulletPrefab, gameObject.transform.position, Quaternion.identity);
+       Shoot();
     }
 }
