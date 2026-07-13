@@ -19,6 +19,7 @@ public class EntityHealthManager : MonoBehaviour
 
     private void CheckHealth()
     {
+        Debug.Log("HEALTH" + Health);
         if(Health <= 0)
         {
             //Ded, for now destroy

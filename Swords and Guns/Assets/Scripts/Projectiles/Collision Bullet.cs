@@ -2,13 +2,6 @@ using UnityEngine;
 
 public class CollisionBullet : MonoBehaviour
 {
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other) 
     {
         Stat playerDmg = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Entity>().GetEntityStat("BulletDamage");
@@ -18,5 +11,4 @@ public class CollisionBullet : MonoBehaviour
         hp.ChangeHealth(playerDmg.stat);
         Destroy(gameObject);
     }
-
 }

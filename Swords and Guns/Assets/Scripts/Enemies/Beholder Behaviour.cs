@@ -59,14 +59,12 @@ public class BeholderBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(state);
         switch(state) 
         {
             case BeholderStates.wander:
                 wanderTimer++;
                 if(wanderTimer >= wanderTime) 
                 {
-                    Debug.Log("CHANGE");
                     wanderTimer = 0;
                     SetDirection(Random.Range(1, 6));
                     anim.SetInteger("movingState", 1);

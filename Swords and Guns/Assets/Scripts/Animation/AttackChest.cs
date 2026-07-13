@@ -18,7 +18,7 @@ public class AttackChest : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.gameObject.GetComponent<ChestBehaviour>().scriptWaiting = false;
-        Debug.Log("hi");
+        animator.gameObject.transform.Find("HitBoxAttack").GetComponent<EnemyCollision>().haveTriggered = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -64,11 +64,8 @@ public class ChestBehaviour : MonoBehaviour
 
     void FixedUpdate() //here what happens in states
     {
-        if(scriptWaiting) 
-        {
-            Debug.Log("Returning");
-            return;
-        }
+        if(scriptWaiting) return;
+        
         switch(state) 
         {
             case chestStates.wait:
