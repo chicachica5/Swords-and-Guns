@@ -16,11 +16,15 @@ public class ChestBehaviour : MonoBehaviour
     [SerializeField] Animator anim;
 
     int distanceToFollow = 12;
-    int distanceToWait = 4;
-    int distanceToMove = 6;
+    float distanceToWait = 1.5f;
+    int distanceToMove = 3;
+
+    int chestPatience = 100;
+    int patienceTimer = 0;
 
     float chestSpeed = 0.08f;
 
+    public bool scriptWaiting = false;
     void Start()
     {
         state = chestStates.hide;
@@ -29,9 +33,16 @@ public class ChestBehaviour : MonoBehaviour
 
     void Update() //here change of states
     {
+        if(scriptWaiting) return;
         float dist = Vector3.Distance(playerTrans.position, gameObject.transform.position);
         
-        if (dist < distanceToWait)
+        if(patienceTimer >= chestPatience)
+        {
+            anim.SetTrigger("startAttacking");
+            patienceTimer = 0;
+            scriptWaiting = true;
+        }
+        else if (dist < distanceToWait)
         {
             state = chestStates.wait;
             anim.SetBool("isMoving", false);
@@ -53,8 +64,16 @@ public class ChestBehaviour : MonoBehaviour
 
     void FixedUpdate() //here what happens in states
     {
+        if(scriptWaiting) 
+        {
+            Debug.Log("Returning");
+            return;
+        }
         switch(state) 
         {
+            case chestStates.wait:
+                patienceTimer++;
+                break;
             case chestStates.follow:
                 gameObject.transform.position += transform.rotation*Vector3.forward*chestSpeed;
                 break;
