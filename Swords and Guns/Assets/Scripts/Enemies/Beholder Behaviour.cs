@@ -16,7 +16,6 @@ public class BeholderBehaviour : MonoBehaviour
 
     [SerializeField] Animator anim;
 
-    int attackDistance = 2;
     int followDistance = 15;
     int wanderDistance = 10;
 
@@ -27,7 +26,6 @@ public class BeholderBehaviour : MonoBehaviour
 
     float beholderSpeed = 0.15f;
     float wanderSpeed = 0.05f;
-    bool closeBehaviour = false;
 
     float shootCD = 300;
     float shootTimer = 0;
