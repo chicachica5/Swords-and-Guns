@@ -29,6 +29,13 @@ public class BeholderBehaviour : MonoBehaviour
     float wanderSpeed = 0.05f;
     bool closeBehaviour = false;
 
+    float shootCD = 300;
+    float shootTimer = 0;
+    public bool isScriptWaiting = false;
+    public bool shootTrigger = false;
+
+    public GameObject bulletPrefab;
+    public GameObject shootPosition;
     void Start()
     {
         state = BeholderStates.wait;
@@ -37,9 +44,18 @@ public class BeholderBehaviour : MonoBehaviour
 
     void Update()
     {
+        if(isScriptWaiting) return;
+
         float dist = Vector3.Distance(playerTrans.position, gameObject.transform.position);
 
-        if(dist < wanderDistance) //set to wander
+        if(shootTimer >= shootCD) 
+        {
+            anim.SetTrigger("attack");
+            anim.SetBool("freeze", true);
+            shootTimer = 0;
+            isScriptWaiting = true;
+        }
+        else if(dist < wanderDistance) //set to wander
         {
             state = BeholderStates.wander;
 
@@ -59,6 +75,9 @@ public class BeholderBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(isScriptWaiting) return;
+        shootTimer++;
+
         switch(state) 
         {
             case BeholderStates.wander:
@@ -81,6 +100,11 @@ public class BeholderBehaviour : MonoBehaviour
                 // code block
                 break;
         }
+    }
+
+    public void startSecondPhaseAttack()
+    {
+        anim.SetTrigger("attackSecond");
     }
 
     void SetDirection(int dir)
@@ -107,5 +131,17 @@ public class BeholderBehaviour : MonoBehaviour
                 movingDir = Vector3.down;
                 break;
         }
+    }
+
+    public void ShootBullet()
+    {
+        GameObject b = Instantiate(bulletPrefab, shootPosition.transform.position, gameObject.transform.rotation);
+        b.GetComponent<BaseMovement>().setSpeed(0.04f);
+    }
+
+    public void UnFreeze()
+    {
+        anim.SetBool("freeze", false);
+        isScriptWaiting = false;
     }
 }

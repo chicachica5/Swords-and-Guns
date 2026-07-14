@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletLife : MonoBehaviour
 {
-    float bulletLife = 300.0f; // 5 sec for now
+    public float bulletLife = 300.0f; // 5 sec for now
 
     void Start()
     {
