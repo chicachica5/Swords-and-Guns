@@ -10,10 +10,16 @@ public class EnemyManager : MonoBehaviour
     int timeToReleaseMin = 60;
     int timeToReleaseMax = 600;
 
+    public int minSpawnDistance = 3;
+    public int maxSpawnDistance = 30;
+
+    [SerializeField] Transform player;
+
     [SerializeField] DifficultyManager _diffManager;
-    [SerializeField] List<EnemyDifficulty> _enemyDiff = new();
+    List<EnemyDifficulty> _enemyDiff = new();
     
-    [SerializeField] List<TimedEnemy> _futureEnemy = new();
+    List<TimedEnemy> _futureEnemy = new();
+
     void Start()
     {
         GetEnemyDifficulties();
@@ -35,6 +41,11 @@ public class EnemyManager : MonoBehaviour
             if(_futureEnemy[i].timer <= 0)
             {
                 //CREATE ENEMY
+                float distance = Random.Range(minSpawnDistance, maxSpawnDistance);
+                Quaternion q = new Quaternion();
+                q.eulerAngles = new Vector3(0.0f, Random.Range(0, 360), 0.0f);
+                _futureEnemy[i].position = player.position + q*(new Vector3(distance, 0.0f, 0.0f));
+
                 GameObject ins = Instantiate(_futureEnemy[i].prefab, _futureEnemy[i].position, Quaternion.identity);
 
                 ins.transform.SetParent(gameObject.transform);
