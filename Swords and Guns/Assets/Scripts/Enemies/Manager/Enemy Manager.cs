@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(_futureEnemy.Count == 0) return;
         for(int i = 0; i < _futureEnemy.Count; i++)
         {
             _futureEnemy[i].timer -= 1;

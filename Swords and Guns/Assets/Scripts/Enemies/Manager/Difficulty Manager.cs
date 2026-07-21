@@ -13,6 +13,7 @@ public class DifficultyManager : MonoBehaviour
 
     public EnemyDifficulty GetEnemyDiff(string name)
     {
+        if(_enemyDiff.Count == 0) return new EnemyDifficulty();
         for(int i = 0; i < _enemyDiff.Count; i++)
         {
             if(_enemyDiff[i].name == name) return _enemyDiff[i];

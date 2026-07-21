@@ -19,6 +19,8 @@ public class Entity : MonoBehaviour
 
     public Stat GetEntityStat(string name)
     {
+        if(_entityStats.Count == 0) return new Stat();
+
         for(int i = 0; i < _entityStats.Count; i++)
         {
             if(_entityStats[i].name == name) return _entityStats[i];
